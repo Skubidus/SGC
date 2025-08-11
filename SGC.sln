@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGCWpfApp", "SGCWpfApp\SGCW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGCLibrary", "SGCLibrary\SGCLibrary.csproj", "{35898E39-E705-401F-AF5E-A1840BC13A1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGCUnitTest", "SGCUnitTest\SGCUnitTest.csproj", "{A1009B02-1598-4448-9400-E9E35E7266E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{35898E39-E705-401F-AF5E-A1840BC13A1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35898E39-E705-401F-AF5E-A1840BC13A1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35898E39-E705-401F-AF5E-A1840BC13A1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1009B02-1598-4448-9400-E9E35E7266E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1009B02-1598-4448-9400-E9E35E7266E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1009B02-1598-4448-9400-E9E35E7266E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1009B02-1598-4448-9400-E9E35E7266E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
