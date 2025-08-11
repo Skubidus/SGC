@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36401.2 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGCWpfApp", "SGCWpfApp\SGCWpfApp.csproj", "{31B7614F-588C-4787-86E8-693BEF3863D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGCLibrary", "SGCLibrary\SGCLibrary.csproj", "{35898E39-E705-401F-AF5E-A1840BC13A1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{31B7614F-588C-4787-86E8-693BEF3863D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31B7614F-588C-4787-86E8-693BEF3863D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31B7614F-588C-4787-86E8-693BEF3863D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35898E39-E705-401F-AF5E-A1840BC13A1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35898E39-E705-401F-AF5E-A1840BC13A1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35898E39-E705-401F-AF5E-A1840BC13A1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35898E39-E705-401F-AF5E-A1840BC13A1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
