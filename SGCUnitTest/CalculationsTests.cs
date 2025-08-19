@@ -200,4 +200,86 @@ public class CalculationsTests
         Assert.Throws<ArgumentOutOfRangeException>(() => Calculations.CalculateTemperature(P, V, n));
     }
     #endregion
+
+    #region ConvertToCelsius Tests
+    [Fact]
+    public void Test_ConvertToCelsius()
+    {
+        // arrange
+        double tempInKelvin = 293.15;
+        double expectedResult = 20.0;
+
+        // act
+        double result = Calculations.ConvertToCelsius(tempInKelvin);
+        result = double.Round(result, 2);
+
+        // assert
+        Assert.Equal(expectedResult, result);
+    }
+
+    [Theory]
+    [InlineData(293.15, 20.0)]
+    [InlineData(573.15, 300.0)]
+    [InlineData(93.15, -180.0)]
+    [InlineData(273.15, 0.0)]
+    public void Test_ConvertToCelsius_Expect_Valid_Results(double tempInKelvin, double expectedResult)
+    {
+        // act
+        double result = Calculations.ConvertToCelsius(tempInKelvin);
+        result = double.Round(result, 2);
+
+        // assert
+        Assert.Equal(expectedResult, result);
+    }
+
+    [Theory]
+    [InlineData(0.0)]
+    [InlineData(-1.0)]
+    [InlineData(-0.1)]
+    public void Test_ConvertToCelsius_Expect_ArgumentOutOfRangeException(double tempinKelvin)
+    {
+        // act + assert
+        Assert.Throws<ArgumentOutOfRangeException>(() => Calculations.ConvertToCelsius(tempinKelvin));
+    }
+    #endregion
+
+    #region ConvertToKelvin Tests
+    [Fact]
+    public void Test_ConvertToKelvin()
+    {
+        // arrange
+        double tempInCelsius = 20.0;
+        double expectedResult = 293.15;
+
+        // act
+        double result = Calculations.ConvertToKelvin(tempInCelsius);
+        result = double.Round(result, 2);
+
+        // assert
+        Assert.Equal(expectedResult, result);
+    }
+
+    [Theory]
+    [InlineData(20.0, 293.15)]
+    [InlineData(0.0, 273.15)]
+    [InlineData(-20.0, 253.15)]
+    public void Test_ConvertToKelvin_Expect_Valid_Results(double tempInCelsius, double expectedResult)
+    {
+        // act
+        double result = Calculations.ConvertToKelvin(tempInCelsius);
+        result = double.Round(result, 2);
+
+        // assert
+        Assert.Equal(expectedResult, result);
+    }
+
+    [Theory]
+    [InlineData(-273.15)]
+    [InlineData(-373.15)]
+    public void Test_ConvertToKelvin_Expect_ArgumentOutOfRangeException(double tempInCelsius)
+    {
+        // act + assert
+        Assert.Throws<ArgumentOutOfRangeException>(() => Calculations.ConvertToKelvin(tempInCelsius));
+    }
+    #endregion
 }

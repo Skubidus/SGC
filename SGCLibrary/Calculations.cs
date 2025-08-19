@@ -83,4 +83,24 @@ public static class Calculations
 
         return (P * V) / (GAS_CONSTANT * n);
     }
+
+    public static double ConvertToKelvin(double tempInCelsius)
+    {
+        if (tempInCelsius <= -273.15)
+        {
+            throw new ArgumentOutOfRangeException(nameof(tempInCelsius), $"The nalue of {nameof(tempInCelsius)} can not be <= -273.15 (absolute zero)!");
+        }
+
+        return tempInCelsius + 273.15;
+    }
+
+    public static double ConvertToCelsius(double tempInKelvin)
+    {
+        if (tempInKelvin <= 0.0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(tempInKelvin), $"The nalue of {nameof(tempInKelvin)} can not be <= 0.0 (absolute zero)!");
+        }
+
+        return tempInKelvin - 273.15;
+    }
 }
