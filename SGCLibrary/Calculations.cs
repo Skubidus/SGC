@@ -1,81 +1,104 @@
-﻿namespace SGCLibrary;
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace SGCLibrary;
 
 public static class Calculations
 {
     public const double GAS_CONSTANT = 8.31446261815324;
     public const double ABSOLUTE_ZERO_CELSIUS = -273.15;
 
-    private static void ValidatePositive(string paramName, double value)
+    /// <summary>
+    /// Checks if a number is positive.
+    /// </summary>
+    /// <returns>
+    /// True if the number is positive or false if it is negative.
+    /// </returns>
+    private static bool IsPositiveNumber(double value)
     {
-        if (value <= 0.0)
-            throw new ArgumentOutOfRangeException(paramName, $"The value of {paramName} cannot be <= 0.0!");
-    }
-
-    private static void ValidateAboveAbsoluteZero(string paramName, double value)
-    {
-        if (value <= ABSOLUTE_ZERO_CELSIUS)
-            throw new ArgumentOutOfRangeException(paramName, $"The value of {paramName} cannot be <= {ABSOLUTE_ZERO_CELSIUS} (absolute zero)!");
+        return value > 0.0;
     }
 
     /// <summary>
     /// Calculates the number of moles (n) using the ideal gas law.
     /// </summary>
+    /// <returns>
+    /// The number of moles (n) or 0, if an invalid argument has been passed in.
+    /// </returns>
     public static double CalculateMoles(double P, double V, double T)
     {
-        ValidatePositive(nameof(P), P);
-        ValidatePositive(nameof(V), V);
-        ValidatePositive(nameof(T), T);
+        if (IsPositiveNumber(P) == false) return default;
+        if (IsPositiveNumber(V) == false) return default;
+        if (IsPositiveNumber(T) == false) return default;
         return (P * V) / (GAS_CONSTANT * T);
     }
 
     /// <summary>
-    /// Calculates the volume (V) using the ideal gas law.
+    /// Calculates the volume (V) in liters (L) using the ideal gas law.
     /// </summary>
+    /// <returns>
+    /// The volume (V) in liters (L) or 0, if an invalid argument has been passed in.
+    /// </returns>
     public static double CalculateVolume(double n, double T, double P)
     {
-        ValidatePositive(nameof(n), n);
-        ValidatePositive(nameof(T), T);
-        ValidatePositive(nameof(P), P);
+        if (IsPositiveNumber(n) == false) return default;
+        if (IsPositiveNumber(T) == false) return default;
+        if (IsPositiveNumber(P) == false) return default;
         return (n * GAS_CONSTANT * T) / P;
     }
 
     /// <summary>
-    /// Calculates the pressure (P) using the ideal gas law.
+    /// Calculates the pressure (P) in kPa using the ideal gas law.
     /// </summary>
+    /// <returns>
+    /// The pressure (P) in kPa or 0, if an invalid argument has been passed in.
+    /// </returns>
     public static double CalculatePressure(double n, double T, double V)
     {
-        ValidatePositive(nameof(n), n);
-        ValidatePositive(nameof(T), T);
-        ValidatePositive(nameof(V), V);
+        if (IsPositiveNumber(n) == false) return default;
+        if (IsPositiveNumber(T) == false) return default;
+        if (IsPositiveNumber(V) == false) return default;
         return (n * GAS_CONSTANT * T) / V;
     }
 
     /// <summary>
-    /// Calculates the temperature (T) using the ideal gas law.
+    /// Calculates the temperature (T) in Kelvin (K) using the ideal gas law.
     /// </summary>
+    /// <returns>
+    /// The temperature (T) in Kelvin (K) or 0, if an invalid argument has been passed in.
+    /// </returns>
     public static double CalculateTemperature(double P, double V, double n)
     {
-        ValidatePositive(nameof(P), P);
-        ValidatePositive(nameof(V), V);
-        ValidatePositive(nameof(n), n);
+        if (IsPositiveNumber(P) == false) return default;
+        if (IsPositiveNumber(V) == false) return default;
+        if (IsPositiveNumber(n) == false) return default;
         return (P * V) / (GAS_CONSTANT * n);
     }
 
     /// <summary>
     /// Converts Celsius to Kelvin.
     /// </summary>
+    /// <returns>
+    /// The temperature in Kelvin (K).
+    /// </returns>
+    /// <exception cref="ArgumentOutOfRangeException" />
     public static double ConvertToKelvin(double tempInCelsius)
     {
-        ValidateAboveAbsoluteZero(nameof(tempInCelsius), tempInCelsius);
+        if (tempInCelsius <= ABSOLUTE_ZERO_CELSIUS)
+            throw new ArgumentOutOfRangeException(nameof(tempInCelsius), $"The value of {nameof(tempInCelsius)} cannot be <= {ABSOLUTE_ZERO_CELSIUS} (absolute zero)!");
+
         return tempInCelsius + 273.15;
     }
 
     /// <summary>
     /// Converts Kelvin to Celsius.
     /// </summary>
+    /// <returns>
+    /// The temperature in Celsius (C) or 0, if an invalid argument has been passed in.
+    /// </returns>
     public static double ConvertToCelsius(double tempInKelvin)
     {
-        ValidatePositive(nameof(tempInKelvin), tempInKelvin);
+        if (IsPositiveNumber(tempInKelvin) == false) return default;
+
         return tempInKelvin - 273.15;
     }
 }
