@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGCWpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Stationeers Gas Calculator (SGC) - by Skubidus" Height="450" Width="800">
     <Grid>
 
     </Grid>
