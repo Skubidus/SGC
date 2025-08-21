@@ -21,7 +21,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TabControl Grid.Column="0" Grid.Row="0" Margin="5">
+        <TabControl Grid.Column="0" Grid.Row="0" Margin="5" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Moles">
                 <views:MolesView x:Name="MolesView" />
             </TabItem>
@@ -31,7 +31,7 @@
             <TabItem Header="Pressure">
                 <views:PressureView x:Name="PressureView" />
             </TabItem>
-            <TabItem Header="Temperature">
+            <TabItem Header="Temperature" x:Name="tabTemperature">
                 <views:TemperatureView x:Name="TemperatureView" />
             </TabItem>
         </TabControl>
