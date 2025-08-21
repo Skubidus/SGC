@@ -1,11 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 
 using SGCLibrary;
-
-using System.Text.RegularExpressions;
-using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace SGCWpfApp.ViewModels;
 public partial class MolesViewViewModel : ObservableObject

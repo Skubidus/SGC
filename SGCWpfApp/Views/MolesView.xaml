@@ -8,7 +8,7 @@
              d:DataContext="{d:DesignInstance Type=vm:MolesViewViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <Grid Margin="10 10">
 
         <Grid.RowDefinitions>
@@ -46,15 +46,17 @@
             VerticalAlignment="Center"
             Margin="0 0 10 0"
             />
-
+        
         <TextBox
             x:Name="txtPressure"
-            Text="{Binding Path=Pressure, UpdateSourceTrigger=PropertyChanged}"
+            Text="{Binding Path=Pressure}"
             GotFocus="TextBox_GotFocus"
+            PreviewTextInput="TextBox_PreviewTextInput"
+            DataObject.Pasting="TextBox_DataObjectPasting"
+            InputMethod.IsInputMethodEnabled="False"
             Grid.Row="1"
             Grid.Column="1"
             Padding="3 0"
-            BorderBrush="Black"
             Margin="0 5"
             />
 
@@ -70,12 +72,14 @@
 
         <TextBox
             x:Name="txtVolume"
-            Text="{Binding Path=Volume, UpdateSourceTrigger=PropertyChanged}"
+            Text="{Binding Path=Volume}"
             GotFocus="TextBox_GotFocus"
+            PreviewTextInput="TextBox_PreviewTextInput"
+            DataObject.Pasting="TextBox_DataObjectPasting"
+            InputMethod.IsInputMethodEnabled="False"
             Grid.Row="2"
             Grid.Column="1"
             Padding="3 0"
-            BorderBrush="Black"
             Margin="0 5"
             />
 
@@ -91,15 +95,17 @@
 
         <TextBox
             x:Name="txtTemperature"
-            Text="{Binding Path=Temperature, UpdateSourceTrigger=PropertyChanged}"
+            Text="{Binding Path=Temperature}"
             GotFocus="TextBox_GotFocus"
+            PreviewTextInput="TextBox_PreviewTextInput"
+            DataObject.Pasting="TextBox_DataObjectPasting"
+            InputMethod.IsInputMethodEnabled="False"
             Grid.Row="3"
             Grid.Column="1"
             Padding="3 0"
-            BorderBrush="Black"
             Margin="0 5"
             />
-293.15
+
         <!-- center arrow -->
         <TextBlock
             Grid.Row="2"
@@ -115,11 +121,13 @@
             x:Name="txtMoles"
             Text="{Binding Path=Moles, Mode=OneWay}"
             GotFocus="TextBox_GotFocus"
+            PreviewTextInput="TextBox_PreviewTextInput"
+            DataObject.Pasting="TextBox_DataObjectPasting"
+            InputMethod.IsInputMethodEnabled="False"
             Grid.Row="2"
             Grid.Column="3"
             IsReadOnly="True"
             Padding="3 0"
-            BorderBrush="Black"
             Margin="0 5"
             />
 
@@ -130,7 +138,7 @@
             TextAlignment="Left"
             VerticalAlignment="Center"
             Margin="10 0 0 0"
-            />  
+            />
 
     </Grid>
 </UserControl>

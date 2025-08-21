@@ -8,6 +8,7 @@
         xmlns:vm="clr-namespace:SGCWpfApp.ViewModels"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
+        Style="{StaticResource MaterialDesignWindow}"
         Title="{Binding Path=AppName}" Height="300" Width="1000" FontSize="20" FontFamily="Segoe UI"
         ResizeMode="CanMinimize">
     

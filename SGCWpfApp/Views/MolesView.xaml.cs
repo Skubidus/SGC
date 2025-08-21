@@ -2,8 +2,10 @@
 
 using System.ComponentModel;
 using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Markup;
 
 namespace SGCWpfApp.Views;
 /// <summary>
@@ -26,11 +28,13 @@ public partial class MolesView : UserControl
 
     private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
     {
-        var regex = new Regex(@"^[0-9]*\.?[0-9]*$");
         var textBox = sender as TextBox;
-        var proposedText = textBox!.Text + e.Text;
+        if (textBox == null)
+        {
+            return;
+        }
 
-        if (regex.IsMatch(proposedText) == false)
+        if (char.IsDigit(e.Text[0]) == false && e.Text != ".")
         {
             e.Handled = true;
             return;
@@ -41,11 +45,57 @@ public partial class MolesView : UserControl
             e.Handled = true;
             return;
         }
+
+        string newText = textBox.Text;
+        int caretPosition = textBox.CaretIndex;
+
+        if (textBox.SelectionLength > 0)
+        {
+            newText = newText.Remove(textBox.SelectionStart, textBox.SelectionLength);
+        }
+
+        if (e.Text == ".")
+        {
+            if (string.IsNullOrEmpty(newText) == false)
+            {
+                caretPosition = newText.Length;
+            }
+            else if (textBox.Text.Length == 0)
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        newText = newText.Insert(caretPosition, e.Text);
+
+        if (string.IsNullOrEmpty(newText) == false)
+        {
+            if (!Regex.IsMatch(newText, @"^(\d*\.?\d*)$"))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
     }
 
-    private void TextBox_GotFocus(object sender, System.Windows.RoutedEventArgs e)
+    private void TextBox_GotFocus(object sender, RoutedEventArgs e)
     {
         var textBox = sender as TextBox;
         textBox!.SelectAll();
+    }
+
+    private void TextBox_DataObjectPasting(object sender, DataObjectPastingEventArgs e)
+    {
+        var clipboardText = e.DataObject.GetData(typeof(string)) as string;
+        if (clipboardText is null)
+        {
+            return;
+        }
+
+        if (Regex.IsMatch(clipboardText, @"^(\d*\.?\d*)$") == false)
+        {
+            e.CancelCommand();
+        }
     }
 }
