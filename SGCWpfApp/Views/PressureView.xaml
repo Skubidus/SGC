@@ -4,9 +4,141 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SGCWpfApp.Views"
+             xmlns:vm="clr-namespace:SGCWpfApp.ViewModels"
+             d:DataContext="{d:DesignInstance Type=vm:PressureViewViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+
+    <Grid Margin="10 10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- header formula -->
+        <TextBlock
+            Grid.Row="0"
+            Grid.ColumnSpan="5"
+            Text="{Binding Path=ViewTitle}"
+            TextAlignment="Center"
+            FontWeight="Bold"
+            Margin="0 0 0 20"
+            />
+
+        <!-- moles  -->
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="Moles:"
+            TextAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="0 0 10 0"
+            />
+
+        <TextBox
+            x:Name="txtMoles"
+            Text="{Binding Path=Moles}"
+            GotFocus="TextBox_GotFocus"
+            PreviewTextInput="TextBox_PreviewTextInput"
+            DataObject.Pasting="TextBox_DataObjectPasting"
+            InputMethod.IsInputMethodEnabled="False"
+            Grid.Row="1"
+            Grid.Column="1"
+            Padding="3 0"
+            Margin="0 5"
+            />
+        
+        <!-- temperature  -->
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="Temperature (in K):"
+            TextAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="0 0 10 0"
+            />
+
+        <TextBox
+            x:Name="txtTemperature"
+            Text="{Binding Path=Temperature}"
+            GotFocus="TextBox_GotFocus"
+            PreviewTextInput="TextBox_PreviewTextInput"
+            DataObject.Pasting="TextBox_DataObjectPasting"
+            InputMethod.IsInputMethodEnabled="False"
+            Grid.Row="2"
+            Grid.Column="1"
+            Padding="3 0"
+            Margin="0 5"
+            />
+
+        <!-- volume  -->
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Text="Volume (in L):"
+            TextAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="0 0 10 0"
+            />
+
+        <TextBox
+            x:Name="txtVolume"
+            Text="{Binding Path=Volume}"
+            GotFocus="TextBox_GotFocus"
+            PreviewTextInput="TextBox_PreviewTextInput"
+            DataObject.Pasting="TextBox_DataObjectPasting"
+            InputMethod.IsInputMethodEnabled="False"
+            Grid.Row="3"
+            Grid.Column="1"
+            Padding="3 0"
+            Margin="0 5"
+            />
+        
+        <!-- center arrow -->
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="2"
+            Text="=>"
+            TextAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="10 0"
+            />
+
+        <!-- pressure  -->
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="4"
+            Text="Pressure (in kPa)"
+            TextAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="10 0 0 0"
+            />
+
+        <TextBox
+            x:Name="txtPressure"
+            Text="{Binding Path=Pressure, Mode=OneWay}"
+            GotFocus="TextBox_GotFocus"
+            IsReadOnly="True"
+            PreviewTextInput="TextBox_PreviewTextInput"
+            DataObject.Pasting="TextBox_DataObjectPasting"
+            InputMethod.IsInputMethodEnabled="False"
+            Grid.Row="2"
+            Grid.Column="3"
+            Padding="3 0"
+            Margin="0 5"
+            />
+
     </Grid>
 </UserControl>
